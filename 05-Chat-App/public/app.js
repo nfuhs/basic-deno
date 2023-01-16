@@ -1,6 +1,7 @@
+// app.js
 const myUsername = prompt("Please enter your name") || "Anonymous";
 const socket = new WebSocket(
-    `ws://localhost:8080/start_web_socket?username=${myUsername}`,
+    `ws://localhost:8080/start_web_socket?username=${myUsername}`
 );
 
 socket.onmessage = (m) => {
@@ -26,7 +27,7 @@ socket.onmessage = (m) => {
 function addMessage(username, message) {
     // displays new message
     document.getElementById(
-        "conversation",
+        "conversation"
     ).innerHTML += `<b> ${username} </b>: ${message} <br/>`;
 }
 
@@ -42,7 +43,7 @@ window.onload = () => {
                 JSON.stringify({
                     event: "send-message",
                     message: message,
-                }),
+                })
             );
         }
     });
